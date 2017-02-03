@@ -1,0 +1,16 @@
+﻿  main.cpp
+c:\users\lanc3\documents\visual studio 2015\projects\driver\driver\main.cpp(59): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\lanc3\documents\visual studio 2015\projects\driver\driver\main.cpp(69): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\lanc3\documents\visual studio 2015\projects\driver\driver\main.cpp(70): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  SceneManager.cpp
+c:\users\lanc3\documents\visual studio 2015\projects\driver\driver\scenemanager.cpp(57): warning C4018: '<': signed/unsigned mismatch
+c:\users\lanc3\documents\visual studio 2015\projects\driver\driver\scenemanager.cpp(97): warning C4018: '<': signed/unsigned mismatch
+  Scene.cpp
+  GameScene.cpp
+  Generating Code...
+  Compiling...
+  MainMenuScene.cpp
+  GameOverScene.cpp
+  Generating Code...
+  Driver.vcxproj -> c:\users\lanc3\documents\visual studio 2015\Projects\Driver\Debug\Driver.exe
+  Driver.vcxproj -> c:\users\lanc3\documents\visual studio 2015\Projects\Driver\Debug\Driver.pdb (Partial PDB)
