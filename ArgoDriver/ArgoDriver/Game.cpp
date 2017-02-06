@@ -18,7 +18,7 @@ Game::~Game()
 
 void Game::Init()
 {
-	SceneManager::getInstance()->addScene(new GameScene());
+	SceneManager::getInstance()->addScene(new GameScene(Width,Height));
 	SceneManager::getInstance()->addScene(new GameOverScene());
 	SceneManager::getInstance()->addScene(new MainMenuScene());
 	SceneManager::getInstance()->switchTo(Scenes::GAME);

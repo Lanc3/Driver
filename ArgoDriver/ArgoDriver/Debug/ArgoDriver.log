@@ -1,6 +1,5 @@
 ﻿  Main.cpp
-c:\users\lanc3\documents\visual studio 2015\projects\argodriver\argodriver\main.cpp(164): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
-  GameScene.cpp
-  Generating Code...
-  ArgoDriver.vcxproj -> c:\users\lanc3\documents\visual studio 2015\Projects\ArgoDriver\Debug\ArgoDriver.exe
-  ArgoDriver.vcxproj -> c:\users\lanc3\documents\visual studio 2015\Projects\ArgoDriver\Debug\ArgoDriver.pdb (Partial PDB)
+c:\users\lanc3\documents\visual studio 2015\projects\argodriver\argodriver\main.cpp(43): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\lanc3\documents\visual studio 2015\projects\argodriver\argodriver\main.cpp(166): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+  ArgoDriver.vcxproj -> C:\Users\Lanc3\documents\visual studio 2015\Projects\ArgoDriver\Debug\ArgoDriver.exe
+  ArgoDriver.vcxproj -> C:\Users\Lanc3\documents\visual studio 2015\Projects\ArgoDriver\Debug\ArgoDriver.pdb (Partial PDB)

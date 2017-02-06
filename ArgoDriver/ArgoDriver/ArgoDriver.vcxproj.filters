@@ -19,6 +19,9 @@
     <Filter Include="Scenes">
       <UniqueIdentifier>{ab054edc-9aaa-4fb5-9a65-e9ddcd3e31a4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameObjects">
+      <UniqueIdentifier>{117bf78d-38a4-4fc8-83d5-44f66b8269e5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -40,6 +43,9 @@
       <Filter>Scenes</Filter>
     </ClCompile>
     <ClCompile Include="Game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Cube.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -65,12 +71,21 @@
     <ClInclude Include="Shader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Cube.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Shaders\basic.frag">
       <Filter>Shaders</Filter>
     </None>
     <None Include="Shaders\basic.vs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\texture.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\texture.vs">
       <Filter>Shaders</Filter>
     </None>
   </ItemGroup>

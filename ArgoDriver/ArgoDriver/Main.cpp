@@ -40,7 +40,7 @@ void printProgramLog(GLuint program);
 void printShaderLog(GLuint shader);
 void render();
 
-
+GLfloat currentFrame = glfwGetTime();
 //The window we'll be rendering to
 SDL_Window* gWindow = NULL;
 
@@ -133,7 +133,9 @@ void close()
 
 int main(int argc, char* args[])
 {
-
+	
+	// Init GLFW
+	glfwInit();
 	// DeltaTime variables
 	GLfloat deltaTime = 0.0f;
 	GLfloat lastFrame = 0.0f;
@@ -161,9 +163,9 @@ int main(int argc, char* args[])
 		while (!quit)
 		{
 			// Calculate delta time
-			GLfloat currentFrame = glfwGetTime();
+			currentFrame = glfwGetTime();
 			deltaTime = currentFrame - lastFrame;
-			lastFrame = currentFrame;
+			
 
 			//Handle events on queue
 			while (SDL_PollEvent(&e) != 0)
@@ -189,11 +191,13 @@ int main(int argc, char* args[])
 
 			// Render
 			glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-			glClear(GL_COLOR_BUFFER_BIT);
+			glEnable(GL_DEPTH_TEST);
+			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 			argoDriver.Render();
 
 			//Update screen
 			SDL_GL_SwapWindow(gWindow);
+			lastFrame = currentFrame;
 		}
 
 		//Disable text input
