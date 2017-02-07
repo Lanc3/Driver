@@ -15,17 +15,17 @@ void Model::Draw(Shader shader)
 
 void Model::LoadModel(string path)
 {
-	//Assimp::Importer import;
-	//const aiScene* scene = import.ReadFile(path, aiProcess_Triangulate | aiProcess_FlipUVs);
+	Assimp::Importer import;
+	const aiScene* scene = import.ReadFile(path, aiProcess_Triangulate | aiProcess_FlipUVs);
 
-	//if (!scene || scene->mFlags == AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
-	//{
-	//	cout << "ERROR::ASSIMP:: " << import.GetErrorString() << endl;
-	//	return;
-	//}
+	if (!scene || scene->mFlags == AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
+	{
+		cout << "ERROR::ASSIMP:: " << import.GetErrorString() << endl;
+		return;
+	}
 
 	this->directory = path.substr(0, path.find_last_of("/"));
-	//this->processNode(scene->mRootNode, scene);
+	this->processNode(scene->mRootNode, scene);
 }
 
 void Model::processNode(aiNode * node, const aiScene * scene)
@@ -103,10 +103,10 @@ vector<Texture> Model::loadMaterialTextures(aiMaterial * mat, aiTextureType type
 {
 	vector<Texture> textures;
 
-	//for (GLuint i = 0; i < mat->GetTextureCount(type); i++)
-	//{
+	for (GLuint i = 0; i < mat->GetTextureCount(type); i++)
+	{
 		aiString str;
-	//	mat->GetTexture(type, i, &str);
+		mat->GetTexture(type, i, &str);
 
 		GLboolean skip = false;
 
@@ -128,7 +128,7 @@ vector<Texture> Model::loadMaterialTextures(aiMaterial * mat, aiTextureType type
 			textures.push_back(tex);
 			this->textures_loaded.push_back(tex);
 		}
-	//}
+	}
 	return textures;
 }
 

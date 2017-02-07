@@ -85,7 +85,7 @@
       <AdditionalIncludeDirectories>C:\ARGO\Driver\ArgoDriver\ArgoDriver\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>SOIL.lib;opengl32.lib;glfw3.lib;SDL2.lib;SDL2main.lib;glew32s.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>%(AdditionalDependencies);assimp.lib;SDL2.lib;SDL2main.lib;SDl2test.lib;SOIL.lib;glew32s.lib;zlibstaticd.lib</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
       <AdditionalLibraryDirectories>C:\ARGO\Driver\ArgoDriver\ArgoDriver\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
@@ -99,6 +99,7 @@
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>C:\ARGO\Driver\ArgoDriver\ArgoDriver\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies);assimp.lib;SDL2.lib;SDL2main.lib;SDl2test.lib;SOIL.lib;glew32s.lib;zlibstaticd.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -114,7 +115,7 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>SOIL.lib;opengl32.lib;glfw3.lib;SDL2.lib;SDL2main.lib;glew32s.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>%(AdditionalDependencies);assimp.lib;SDL2.lib;SDL2main.lib;SDl2test.lib;SOIL.lib;glew32s.lib;zlibstaticd.lib</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
       <AdditionalLibraryDirectories>C:\ARGO\Driver\ArgoDriver\ArgoDriver\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
@@ -132,6 +133,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>C:\ARGO\Driver\ArgoDriver\ArgoDriver\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies);assimp.lib;SDL2.lib;SDL2main.lib;SDl2test.lib;SOIL.lib;glew32s.lib;zlibstaticd.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>

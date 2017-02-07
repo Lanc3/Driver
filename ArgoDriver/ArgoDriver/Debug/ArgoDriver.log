@@ -12,10 +12,34 @@ Mesh.obj : warning LNK4049: locally defined symbol ___glewVertexAttribPointer im
 Mesh.obj : warning LNK4049: locally defined symbol ___glewBindVertexArray imported
 Mesh.obj : warning LNK4049: locally defined symbol ___glewGenVertexArrays imported
 Model.obj : warning LNK4049: locally defined symbol ___glewGenerateMipmap imported
-Model.obj : error LNK2019: unresolved external symbol "public: __thiscall Assimp::Importer::Importer(void)" (??0Importer@Assimp@@QAE@XZ) referenced in function "private: void __thiscall Model::LoadModel(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?LoadModel@Model@@AAEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
-Model.obj : error LNK2019: unresolved external symbol "public: __thiscall Assimp::Importer::~Importer(void)" (??1Importer@Assimp@@QAE@XZ) referenced in function "private: void __thiscall Model::LoadModel(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?LoadModel@Model@@AAEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
-Model.obj : error LNK2019: unresolved external symbol "public: struct aiScene const * __thiscall Assimp::Importer::ReadFile(char const *,unsigned int)" (?ReadFile@Importer@Assimp@@QAEPBUaiScene@@PBDI@Z) referenced in function "public: struct aiScene const * __thiscall Assimp::Importer::ReadFile(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &,unsigned int)" (?ReadFile@Importer@Assimp@@QAEPBUaiScene@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@I@Z)
-Model.obj : error LNK2019: unresolved external symbol "public: char const * __thiscall Assimp::Importer::GetErrorString(void)const " (?GetErrorString@Importer@Assimp@@QBEPBDXZ) referenced in function "private: void __thiscall Model::LoadModel(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?LoadModel@Model@@AAEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
-Model.obj : error LNK2019: unresolved external symbol _aiGetMaterialTextureCount referenced in function "public: unsigned int __thiscall aiMaterial::GetTextureCount(enum aiTextureType)const " (?GetTextureCount@aiMaterial@@QBEIW4aiTextureType@@@Z)
-Model.obj : error LNK2019: unresolved external symbol _aiGetMaterialTexture referenced in function "public: enum aiReturn __thiscall aiMaterial::GetTexture(enum aiTextureType,unsigned int,struct aiString *,enum aiTextureMapping *,unsigned int *,float *,enum aiTextureOp *,enum aiTextureMapMode *)const " (?GetTexture@aiMaterial@@QBE?AW4aiReturn@@W4aiTextureType@@IPAUaiString@@PAW4aiTextureMapping@@PAIPAMPAW4aiTextureOp@@PAW4aiTextureMapMode@@@Z)
-C:\ARGO\Driver\ArgoDriver\Debug\ArgoDriver.exe : fatal error LNK1120: 6 unresolved externals
+GameScene.obj : error LNK2019: unresolved external symbol __imp__glBindTexture@8 referenced in function "public: __thiscall GameScene::GameScene(float,float)" (??0GameScene@@QAE@MM@Z)
+Mesh.obj : error LNK2001: unresolved external symbol __imp__glBindTexture@8
+Model.obj : error LNK2001: unresolved external symbol __imp__glBindTexture@8
+SOIL.lib(SOIL.obj) : error LNK2001: unresolved external symbol __imp__glBindTexture@8
+GameScene.obj : error LNK2019: unresolved external symbol __imp__glDrawArrays@12 referenced in function "public: virtual void __thiscall GameScene::draw(void)" (?draw@GameScene@@UAEXXZ)
+GameScene.obj : error LNK2019: unresolved external symbol __imp__glGenTextures@8 referenced in function "public: __thiscall GameScene::GameScene(float,float)" (??0GameScene@@QAE@MM@Z)
+Model.obj : error LNK2001: unresolved external symbol __imp__glGenTextures@8
+SOIL.lib(SOIL.obj) : error LNK2001: unresolved external symbol __imp__glGenTextures@8
+GameScene.obj : error LNK2019: unresolved external symbol __imp__glTexImage2D@36 referenced in function "public: __thiscall GameScene::GameScene(float,float)" (??0GameScene@@QAE@MM@Z)
+Model.obj : error LNK2001: unresolved external symbol __imp__glTexImage2D@36
+SOIL.lib(SOIL.obj) : error LNK2001: unresolved external symbol __imp__glTexImage2D@36
+GameScene.obj : error LNK2019: unresolved external symbol __imp__glTexParameteri@12 referenced in function "public: __thiscall GameScene::GameScene(float,float)" (??0GameScene@@QAE@MM@Z)
+Model.obj : error LNK2001: unresolved external symbol __imp__glTexParameteri@12
+SOIL.lib(SOIL.obj) : error LNK2001: unresolved external symbol __imp__glTexParameteri@12
+GameScene.obj : error LNK2019: unresolved external symbol _glfwGetTime referenced in function "public: virtual void __thiscall GameScene::update(float)" (?update@GameScene@@UAEXM@Z)
+Main.obj : error LNK2001: unresolved external symbol _glfwGetTime
+Main.obj : error LNK2019: unresolved external symbol __imp__glClear@4 referenced in function _SDL_main
+Main.obj : error LNK2019: unresolved external symbol __imp__glClearColor@16 referenced in function _SDL_main
+Main.obj : error LNK2019: unresolved external symbol __imp__glEnable@4 referenced in function _SDL_main
+Main.obj : error LNK2019: unresolved external symbol _glfwInit referenced in function _SDL_main
+Mesh.obj : error LNK2019: unresolved external symbol __imp__glDrawElements@16 referenced in function "public: void __thiscall Mesh::Draw(class Shader)" (?Draw@Mesh@@QAEXVShader@@@Z)
+SOIL.lib(SOIL.obj) : error LNK2019: unresolved external symbol __imp__wglGetProcAddress@4 referenced in function _query_DXT_capability
+glew32s.lib(glew.obj) : error LNK2001: unresolved external symbol __imp__wglGetProcAddress@4
+SOIL.lib(SOIL.obj) : error LNK2019: unresolved external symbol __imp__glDeleteTextures@8 referenced in function _SOIL_direct_load_DDS_from_memory
+SOIL.lib(SOIL.obj) : error LNK2019: unresolved external symbol __imp__glGetIntegerv@8 referenced in function _SOIL_internal_create_OGL_texture
+glew32s.lib(glew.obj) : error LNK2001: unresolved external symbol __imp__glGetIntegerv@8
+SOIL.lib(SOIL.obj) : error LNK2019: unresolved external symbol __imp__glGetString@4 referenced in function _query_DXT_capability
+glew32s.lib(glew.obj) : error LNK2001: unresolved external symbol __imp__glGetString@4
+SOIL.lib(SOIL.obj) : error LNK2019: unresolved external symbol __imp__glReadPixels@28 referenced in function _SOIL_save_screenshot
+glew32s.lib(glew.obj) : error LNK2019: unresolved external symbol __imp__wglGetCurrentDC@0 referenced in function _wglewGetExtension@4
+C:\ARGO\Driver\ArgoDriver\Debug\ArgoDriver.exe : fatal error LNK1120: 17 unresolved externals
