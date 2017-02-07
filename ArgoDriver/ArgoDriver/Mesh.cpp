@@ -5,6 +5,8 @@ Mesh::Mesh(vector<Vertex> vertices, vector<GLuint> indices, vector<Texture> text
 	this->vertices = vertices;
 	this->textures = textures;
 	this->indices = indices;
+
+	this->setupMesh();
 }
 
 void Mesh::Draw(Shader shader)

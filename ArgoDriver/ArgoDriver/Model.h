@@ -14,6 +14,7 @@ using namespace std;
 #include <glm/gtc/matrix_transform.hpp>
 #include <SOIL.h>
 #include <assimp/Importer.hpp>
+#include<assimp/material.h>
 #include <assimp/cimport.h>
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
@@ -23,6 +24,8 @@ using namespace std;
 class Model
 {
 public:
+	Model() {}
+
 	Model(GLchar* path);
 
 	void Draw(Shader shader);

@@ -7,6 +7,8 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
+#include "Model.h"
+
 enum class GAME_STATE {PAUSED, GAME, GAME_LOSE, GAME_WIN};
 class GameScene : public Scene
 {
@@ -33,6 +35,7 @@ private:
 	// Load and create a texture
 	GLuint texture1;
 	GLuint texture2;
+	Model model;
 	Shader ourShader;
 	glm::mat4 trans;
 	float width, height;

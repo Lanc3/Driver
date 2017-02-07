@@ -17,7 +17,7 @@
 GameScene::GameScene(float width,float height) : Scene(Scenes::GAME),width(width),height(height)
 {
 	 ourShader = Shader("..\\ArgoDriver\\Shaders\\texture.vs", "..\\ArgoDriver\\Shaders\\texture.frag");
-
+	 model = Model("..\\ArgoDriver\\Assets\\Models\\player.obj");
 
 	 GLfloat vertices[] = {
 		 -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
@@ -182,10 +182,12 @@ void GameScene::draw()
 	glBindTexture(GL_TEXTURE_2D, texture2);
 	glUniform1i(glGetUniformLocation(ourShader.Program, "ourTexture2"), 1);
 
-	// Draw container
-	glBindVertexArray(VAO);
-	glDrawArrays(GL_TRIANGLES, 0, 36);
-	glBindVertexArray(0);
+	glm::mat4 model1;
+	model1 = glm::translate(model1, glm::vec3(0.0f, -1.75f, 0.0f)); // Translate it down a bit so it's at the center of the scene
+	model1 = glm::scale(model1, glm::vec3(0.2f, 0.2f, 0.2f));	// It's a bit too big for our scene, so scale it down
+	glUniformMatrix4fv(glGetUniformLocation(ourShader.Program, "model1"), 1, GL_FALSE, glm::value_ptr(model1));
+	model.Draw(ourShader);
+	
 
 }
 
