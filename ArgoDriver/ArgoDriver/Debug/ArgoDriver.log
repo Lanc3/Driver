@@ -1,5 +1,25 @@
-﻿  Main.cpp
-c:\users\lanc3\documents\visual studio 2015\projects\argodriver\argodriver\main.cpp(43): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
-c:\users\lanc3\documents\visual studio 2015\projects\argodriver\argodriver\main.cpp(166): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-  ArgoDriver.vcxproj -> C:\Users\Lanc3\documents\visual studio 2015\Projects\ArgoDriver\Debug\ArgoDriver.exe
-  ArgoDriver.vcxproj -> C:\Users\Lanc3\documents\visual studio 2015\Projects\ArgoDriver\Debug\ArgoDriver.pdb (Partial PDB)
+﻿  Model.cpp
+  Mesh.cpp
+c:\argo\driver\argodriver\argodriver\mesh.cpp(15): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
+LINK : warning LNK4098: defaultlib 'MSVCRTD' conflicts with use of other libs; use /NODEFAULTLIB:library
+LINK : warning LNK4098: defaultlib 'LIBCMT' conflicts with use of other libs; use /NODEFAULTLIB:library
+Mesh.obj : warning LNK4049: locally defined symbol ___glewActiveTexture imported
+Mesh.obj : warning LNK4049: locally defined symbol ___glewBindBuffer imported
+Mesh.obj : warning LNK4049: locally defined symbol ___glewBufferData imported
+Mesh.obj : warning LNK4049: locally defined symbol ___glewGenBuffers imported
+Mesh.obj : warning LNK4049: locally defined symbol ___glewEnableVertexAttribArray imported
+Mesh.obj : warning LNK4049: locally defined symbol ___glewGetUniformLocation imported
+Mesh.obj : warning LNK4049: locally defined symbol ___glewUniform1f imported
+Mesh.obj : warning LNK4049: locally defined symbol ___glewUniform1i imported
+Mesh.obj : warning LNK4049: locally defined symbol ___glewVertexAttribPointer imported
+Mesh.obj : warning LNK4049: locally defined symbol ___glewBindVertexArray imported
+Mesh.obj : warning LNK4049: locally defined symbol ___glewGenVertexArrays imported
+Model.obj : warning LNK4049: locally defined symbol ___glewGenerateMipmap imported
+Model.obj : error LNK2019: unresolved external symbol "public: __thiscall Assimp::Importer::Importer(void)" (??0Importer@Assimp@@QAE@XZ) referenced in function "private: void __thiscall Model::LoadModel(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?LoadModel@Model@@AAEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+Model.obj : error LNK2019: unresolved external symbol "public: __thiscall Assimp::Importer::~Importer(void)" (??1Importer@Assimp@@QAE@XZ) referenced in function "private: void __thiscall Model::LoadModel(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?LoadModel@Model@@AAEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+Model.obj : error LNK2019: unresolved external symbol "public: struct aiScene const * __thiscall Assimp::Importer::ReadFile(char const *,unsigned int)" (?ReadFile@Importer@Assimp@@QAEPBUaiScene@@PBDI@Z) referenced in function "public: struct aiScene const * __thiscall Assimp::Importer::ReadFile(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &,unsigned int)" (?ReadFile@Importer@Assimp@@QAEPBUaiScene@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@I@Z)
+Model.obj : error LNK2019: unresolved external symbol "public: char const * __thiscall Assimp::Importer::GetErrorString(void)const " (?GetErrorString@Importer@Assimp@@QBEPBDXZ) referenced in function "private: void __thiscall Model::LoadModel(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?LoadModel@Model@@AAEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+Model.obj : error LNK2019: unresolved external symbol _aiGetMaterialTextureCount referenced in function "public: unsigned int __thiscall aiMaterial::GetTextureCount(enum aiTextureType)const " (?GetTextureCount@aiMaterial@@QBEIW4aiTextureType@@@Z)
+Model.obj : error LNK2019: unresolved external symbol _aiGetMaterialTexture referenced in function "public: enum aiReturn __thiscall aiMaterial::GetTexture(enum aiTextureType,unsigned int,struct aiString *,enum aiTextureMapping *,unsigned int *,float *,enum aiTextureOp *,enum aiTextureMapMode *)const " (?GetTexture@aiMaterial@@QBE?AW4aiReturn@@W4aiTextureType@@IPAUaiString@@PAW4aiTextureMapping@@PAIPAMPAW4aiTextureOp@@PAW4aiTextureMapMode@@@Z)
+C:\ARGO\Driver\ArgoDriver\Debug\ArgoDriver.exe : fatal error LNK1120: 6 unresolved externals
