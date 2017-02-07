@@ -10,7 +10,7 @@ public:
 	GameOverScene();
 	void update(float dt) override;
 	void draw() override;
-	void updateInput() override;
+	void updateInput(float dt, unsigned char key, GLfloat xoffset, GLfloat yoffset) override;
 	//can be overrided
 	//void exit();
 	//void enter();

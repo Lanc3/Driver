@@ -5,6 +5,7 @@
 #include "MainMenuScene.h"
 
 
+
 Game::Game(GLuint width, GLuint height)
 	: State(GAME_ACTIVE), Keys(), Width(width), Height(height)
 {
@@ -28,13 +29,13 @@ void Game::Update(GLfloat dt)
 {
 	//other updates
 	SceneManager::getInstance()->update(dt);
-	SceneManager::getInstance()->updateInput();
+	
 }
 
 
-void Game::ProcessInput(GLfloat dt)
+void Game::ProcessInput(GLfloat dt, unsigned char e, GLfloat xoffset, GLfloat yoffset)
 {
-
+	SceneManager::getInstance()->updateInput(dt,e,  xoffset,  yoffset);
 }
 
 void Game::Render()

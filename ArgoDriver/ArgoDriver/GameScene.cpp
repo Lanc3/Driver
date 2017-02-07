@@ -1,18 +1,5 @@
-// GLEW
-#pragma comment (lib, "glew32s.lib")
-#define GLEW_STATIC
-#include <GL/glew.h>
-
-// GLFW
-#include <GLFW/glfw3.h>
-
-
-
 //other
 #include "GameScene.h"
-#include "Shader.h"
-#include <SOIL.h>
-
 
 GameScene::GameScene(float width,float height) : Scene(Scenes::GAME),width(width),height(height)
 {
@@ -121,10 +108,12 @@ GameScene::GameScene(float width,float height) : Scene(Scenes::GAME),width(width
 	ourShader.Use();
 
 	m_skyBox.createSkybox();
+	testCube = Cube("", glm::perspective(45.0f, (GLfloat)width / (GLfloat)height, 0.1f, 100.0f));
+	// Camera
+	cam = camera(glm::vec3(0.0f, 0.0f, 3.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+	ourShader = Shader("..\\ArgoDriver\\Shaders\\texture.vs", "..\\ArgoDriver\\Shaders\\texture.frag");
+	myModel = Model("..\\ArgoDriver\\Assets\\Models\\player.obj");
 }
-
-
-
 
 void GameScene::enter()
 {
@@ -137,43 +126,30 @@ void GameScene::exit()
 
 void GameScene::cleanUpRecources()
 {
-	glDeleteVertexArrays(1, &VAO);
-	glDeleteBuffers(1, &VBO);
-	glDeleteBuffers(1, &EBO);
+	testCube.clear();
 }
 
-void GameScene::updateInput()
+void GameScene::updateInput(float dt, unsigned char key, GLfloat xoffset, GLfloat yoffset)
 {
-
+	cam.ProcessInput(dt, key,  xoffset,  yoffset);
 }
+
 
 void GameScene::update(GLfloat dt)
 {
-	// Create transformations
-	glm::mat4 model;
-	glm::mat4 view;
-	glm::mat4 projection;
-	model = glm::rotate(model, (GLfloat)glfwGetTime() * 0.5f, glm::vec3(0.5f, 1.0f, 0.0f));
-	view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
-	// Note: currently we set the projection matrix each frame, but since the projection matrix rarely changes it's often best practice to set it outside the main loop only once.
-	projection = glm::perspective(45.0f, (GLfloat)width / (GLfloat)height, 0.1f, 100.0f);
-	// Get their uniform location
-	GLint modelLoc = glGetUniformLocation(ourShader.Program, "model");
-	GLint viewLoc = glGetUniformLocation(ourShader.Program, "view");
-	GLint projLoc = glGetUniformLocation(ourShader.Program, "projection");
-	// Pass them to the shaders
-	glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-	glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
-	glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(projection));
-
+	//testCube.update(dt);
 }
-
-
 
 void GameScene::draw()
 {
-	
+	m_skyBox.render(cam);
+	// Activate shader
+	ourShader.Use();
 
+	glm::mat4 model;	
+	model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));	// It's a bit too big for our scene, so scale it down
+	glUniformMatrix4fv(glGetUniformLocation(ourShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+	myModel.Draw(ourShader);
 	// Bind Textures using texture units
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, texture1);
@@ -187,8 +163,7 @@ void GameScene::draw()
 	glDrawArrays(GL_TRIANGLES, 0, 36);
 	glBindVertexArray(0);
 
-	m_skyBox.render();
-	// Activate shader
-	ourShader.Use();
+	
+	testCube.draw(cam);
 }
 

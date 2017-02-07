@@ -99,22 +99,19 @@ GLuint Skybox::loadCubemap(vector<const GLchar*> faces)
 	return textureID;
 }
 
-void Skybox::render()
+void Skybox::render(camera cam)
 {
-	//glm::mat4 view = glm::mat4(glm::mat3(camera.GetViewMatrix()));	// Remove any translation component of the view matrix
-
-	glDepthMask(GL_FALSE);
+	// Draw skybox first
+	glDepthMask(GL_FALSE);// Remember to turn depth writing off
 	m_shader.Use();
-	// ... Set view and projection matrix
-
-
-	////VIEW is NULL there but it shows SOMETHING
-	glm::mat4 view = glm::mat4(glm::mat3(view));	// Remove any translation component of the view matrix
-	glm::mat4 projection = glm::perspective(1.f, (float)1280 / (float)720, 0.1f, 100.0f);
+	glm::mat4 view = glm::mat4(glm::mat3(cam.GetViewMatrix()));	// Remove any translation component of the view matrix
+	glm::mat4 projection = glm::perspective(cam.Zoom, (float)1280 / (float)720, 0.1f, 100.0f);
 	glUniformMatrix4fv(glGetUniformLocation(m_shader.Program, "view"), 1, GL_FALSE, glm::value_ptr(view));
 	glUniformMatrix4fv(glGetUniformLocation(m_shader.Program, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
-
+	// skybox cube
 	glBindVertexArray(skyboxVAO);
+	glActiveTexture(GL_TEXTURE0);
+	glUniform1i(glGetUniformLocation(m_shader.Program, "skybox"), 0);
 	glBindTexture(GL_TEXTURE_CUBE_MAP, cubemapTexture);
 	glDrawArrays(GL_TRIANGLES, 0, 36);
 	glBindVertexArray(0);

@@ -16,7 +16,7 @@ void Scene::exit()
 {
 }
 
-void Scene::updateInput()
+void Scene::updateInput(float dt, unsigned char key, GLfloat xoffset, GLfloat yoffset)
 {
 
 }

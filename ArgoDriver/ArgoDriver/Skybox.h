@@ -8,6 +8,7 @@
 #include "SOIL.h"
 #include "Shader.h"
 #include <vector>
+#include "camera.h"
 
 using namespace std;
 
@@ -15,7 +16,7 @@ class Skybox
 {
 public:
 	void createSkybox();
-	void render();
+	void render(camera cam);
 	GLuint loadCubemap(vector<const GLchar*> faces);
 	GLuint cubemapTexture;
 	GLuint skyboxVAO;
