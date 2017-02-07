@@ -1,9 +1,5 @@
 ﻿  Skybox.cpp
   GameScene.cpp
   Generating Code...
-  Compiling...
-  Game.cpp
-c:\users\gamejam\desktop\argot!!!\driver\argodriver\argodriver\game.cpp(21): warning C4244: 'argument': conversion from 'GLuint' to 'float', possible loss of data
-  Generating Code...
   ArgoDriver.vcxproj -> C:\Users\gamejam\Desktop\Argot!!!\Driver\ArgoDriver\Debug\ArgoDriver.exe
   ArgoDriver.vcxproj -> C:\Users\gamejam\Desktop\Argot!!!\Driver\ArgoDriver\Debug\ArgoDriver.pdb (Partial PDB)

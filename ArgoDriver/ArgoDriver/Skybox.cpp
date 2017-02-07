@@ -62,12 +62,12 @@ void Skybox::createSkybox()
 	glBindVertexArray(0);
 
 	vector<const GLchar*> faces;
-	faces.push_back("right.jpg");
-	faces.push_back("left.jpg");
-	faces.push_back("top.jpg");
-	faces.push_back("bottom.jpg");
-	faces.push_back("back.jpg");
-	faces.push_back("front.jpg");
+	faces.push_back("..\\ArgoDriver\\Assets\\Images\\right.jpg");
+	faces.push_back("..\\ArgoDriver\\Assets\\Images\\left.jpg");
+	faces.push_back("..\\ArgoDriver\\Assets\\Images\\top.jpg");
+	faces.push_back("..\\ArgoDriver\\Assets\\Images\\bottom.jpg");
+	faces.push_back("..\\ArgoDriver\\Assets\\Images\\back.jpg");
+	faces.push_back("..\\ArgoDriver\\Assets\\Images\\front.jpg");
 	cubemapTexture = loadCubemap(faces);
 
 	loadCubemap(faces);	

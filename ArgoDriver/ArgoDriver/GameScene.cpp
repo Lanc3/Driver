@@ -172,9 +172,7 @@ void GameScene::update(GLfloat dt)
 
 void GameScene::draw()
 {
-	m_skyBox.render();
-	// Activate shader
-	ourShader.Use();
+	
 
 	// Bind Textures using texture units
 	glActiveTexture(GL_TEXTURE0);
@@ -188,5 +186,9 @@ void GameScene::draw()
 	glBindVertexArray(VAO);
 	glDrawArrays(GL_TRIANGLES, 0, 36);
 	glBindVertexArray(0);
+
+	m_skyBox.render();
+	// Activate shader
+	ourShader.Use();
 }
 
