@@ -8,6 +8,7 @@ enum class Scenes { SPLASH, MAINMENU, OPTIONS, GAME, LOAD ,SELECT,HELP, GAME_WIN
 
 #include "Scene.h"
 #include <vector>
+#include <GL\glew.h>
 
 class Scene;
 class SceneManager
@@ -34,7 +35,7 @@ public:
 
 	void cleanUpRecources();
 
-	void updateInput();
+	void updateInput(float dt,unsigned char key, GLfloat xoffset, GLfloat yoffset);
 	int playerColorIndex = 0;
 private:
 	Scene* m_currScene;

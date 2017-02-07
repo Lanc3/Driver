@@ -22,8 +22,9 @@
 #include <string>
 
 //Screen dimension constants
-const int SCREEN_WIDTH = 640;
-const int SCREEN_HEIGHT = 480;
+//Screen dimension constants
+const int SCREEN_WIDTH = 1920;
+const int SCREEN_HEIGHT = 1080;
 
 //Starts up SDL, creates window, and initializes OpenGL
 bool init();
@@ -31,7 +32,8 @@ bool init();
 
 //Input handler
 void handleKeys(unsigned char key, int x, int y);
-
+GLfloat lastX = 400, lastY = 300;
+bool firstMouse = true;
 //Frees media and shuts down SDL
 void close();
 
@@ -158,7 +160,7 @@ int main(int argc, char* args[])
 		// create the Game object to abstract away from the window generation code
 		argoDriver.Init();
 		argoDriver.State = GAME_ACTIVE;
-
+		SDL_SetWindowFullscreen(gWindow, SDL_WINDOW_FULLSCREEN_DESKTOP);
 		//While application is running
 		while (!quit)
 		{
@@ -170,8 +172,24 @@ int main(int argc, char* args[])
 			//Handle events on queue
 			while (SDL_PollEvent(&e) != 0)
 			{
+				int x = 0, y = 0;
+				SDL_GetMouseState(&x, &y);
+				if (firstMouse)
+				{
+					lastX = x;
+					lastY = y;
+					firstMouse = false;
+				}
+
+				GLfloat xoffset = x - lastX;
+				GLfloat yoffset = lastY - y;  // Reversed since y-coordinates go from bottom to left
+
+				lastX = x;
+				lastY = y;
+
+				argoDriver.ProcessInput(deltaTime, e.text.text[0],xoffset,yoffset);
 				//User requests quit
-				if (e.type == SDL_QUIT)
+				if (e.type == SDL_QUIT )
 				{
 					quit = true;
 				}
@@ -180,11 +198,20 @@ int main(int argc, char* args[])
 				{
 					int x = 0, y = 0;
 					SDL_GetMouseState(&x, &y);
+					
 					handleKeys(e.text.text[0], x, y);
 				}
+				if (e.type == SDL_KEYDOWN)
+				{
+					if (e.key.keysym.sym == SDLK_ESCAPE)
+					{
+						quit = true;
+					}
+				}
+				
 			}
 
-			argoDriver.ProcessInput(deltaTime);
+			
 
 			// Update Game state
 			argoDriver.Update(deltaTime);

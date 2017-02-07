@@ -6,7 +6,7 @@ MainMenuScene::MainMenuScene() : Scene(Scenes::MAINMENU)
 
 }
 
-void MainMenuScene::updateInput()
+void MainMenuScene::updateInput(float dt, unsigned char key, GLfloat xoffset, GLfloat yoffset)
 {
 
 }

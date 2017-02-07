@@ -8,12 +8,12 @@ SceneManager::SceneManager() : m_currScene(nullptr)
 
 }
 
-void SceneManager::updateInput()
+void SceneManager::updateInput(float dt, unsigned char key, GLfloat xoffset, GLfloat yoffset)
 {
 	//dynamic typing
 	if (m_currScene != nullptr)
 	{
-		m_currScene->updateInput();
+		m_currScene->updateInput(dt, key,xoffset,yoffset);
 	}
 }
 
