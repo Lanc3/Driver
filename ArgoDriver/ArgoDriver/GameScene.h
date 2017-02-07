@@ -2,6 +2,7 @@
 
 #include "Scene.h"
 #include "Shader.h"
+#include "Skybox.h"
 // GLM Mathematics
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -36,4 +37,5 @@ private:
 	Shader ourShader;
 	glm::mat4 trans;
 	float width, height;
+	Skybox m_skyBox;
 };

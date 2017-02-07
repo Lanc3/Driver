@@ -48,6 +48,9 @@
     <ClCompile Include="Cube.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Skybox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameOverScene.h">
@@ -74,6 +77,9 @@
     <ClInclude Include="Cube.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Skybox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Shaders\basic.frag">
@@ -86,6 +92,12 @@
       <Filter>Shaders</Filter>
     </None>
     <None Include="Shaders\texture.vs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\skyBoxShader.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\skyBoxShader.vs">
       <Filter>Shaders</Filter>
     </None>
   </ItemGroup>
