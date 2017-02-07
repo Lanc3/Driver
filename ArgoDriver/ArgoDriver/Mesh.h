@@ -12,6 +12,8 @@ using namespace std;
 #include <glm/gtc/matrix_transform.hpp>
 
 #include <assimp/Importer.hpp>
+#include <assimp/cimport.h>
+#include <assimp/types.h>
 #include "Shader.h"
 //#include <assimp/scene.h>
 //#include <assimp/postprocess.h>
