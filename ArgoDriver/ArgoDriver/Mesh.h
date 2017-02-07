@@ -13,6 +13,7 @@ using namespace std;
 
 #include <assimp/Importer.hpp>
 #include <assimp/cimport.h>
+#include <glm/gtc/type_ptr.hpp>
 #include <assimp/types.h>
 #include "Shader.h"
 //#include <assimp/scene.h>

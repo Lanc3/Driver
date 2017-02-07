@@ -6,7 +6,7 @@ GameOverScene::GameOverScene() : Scene(Scenes::GAME_LOSE)
 	
 }
 
-void GameOverScene::updateInput()
+void GameOverScene::updateInput(float dt, unsigned char key, GLfloat xoffset, GLfloat yoffset)
 {
 
 }

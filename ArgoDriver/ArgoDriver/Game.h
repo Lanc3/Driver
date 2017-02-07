@@ -3,7 +3,7 @@
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
-
+#include <SDL.h>
 
 // Represents the current state of the game
 enum GameState {
@@ -28,7 +28,7 @@ public:
 	// Initialize game state (load all shaders/textures/levels)
 	void Init();
 	// GameLoop
-	void ProcessInput(GLfloat dt);
+	void ProcessInput(GLfloat dt, unsigned char key, GLfloat xoffset, GLfloat yoffset);
 	void Update(GLfloat dt);
 	void Render();
 

@@ -1,5 +1,7 @@
 #pragma once
 #include "SceneManager.h"
+#include <GL\glew.h>
+
 #include <iostream>
 using namespace std;
 
@@ -22,7 +24,7 @@ public:
 	const Scenes getTitle();
 
 	virtual void update(float dt) = 0;
-	virtual void updateInput() = 0;
+	virtual void updateInput(float dt, unsigned char key, GLfloat xoffset, GLfloat yoffset);
 	virtual void draw() = 0;
 
 protected:
