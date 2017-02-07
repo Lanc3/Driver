@@ -69,8 +69,6 @@ void Skybox::createSkybox()
 	faces.push_back("..\\ArgoDriver\\Assets\\Images\\back.jpg");
 	faces.push_back("..\\ArgoDriver\\Assets\\Images\\front.jpg");
 	cubemapTexture = loadCubemap(faces);
-
-	loadCubemap(faces);	
 }
 
 GLuint Skybox::loadCubemap(vector<const GLchar*> faces)
@@ -108,6 +106,14 @@ void Skybox::render()
 	glDepthMask(GL_FALSE);
 	m_shader.Use();
 	// ... Set view and projection matrix
+
+
+	////VIEW is NULL there but it shows SOMETHING
+	glm::mat4 view = glm::mat4(glm::mat3(view));	// Remove any translation component of the view matrix
+	glm::mat4 projection = glm::perspective(1.f, (float)1280 / (float)720, 0.1f, 100.0f);
+	glUniformMatrix4fv(glGetUniformLocation(m_shader.Program, "view"), 1, GL_FALSE, glm::value_ptr(view));
+	glUniformMatrix4fv(glGetUniformLocation(m_shader.Program, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
+
 	glBindVertexArray(skyboxVAO);
 	glBindTexture(GL_TEXTURE_CUBE_MAP, cubemapTexture);
 	glDrawArrays(GL_TRIANGLES, 0, 36);
