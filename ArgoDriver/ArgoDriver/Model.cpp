@@ -141,7 +141,7 @@ vector<Texture> Model::loadMaterialTextures(aiMaterial * mat, aiTextureType type
 GLint Model::textureFromFile(const char * path, string directory)
 {
 	string filename = string(path);
-	filename = "..//ArgoDriver//Assets//Models" + '//' + filename;
+	filename = "..\\ArgoDriver\\Assets\\Models\\" + filename;
 	GLuint textureID;
 	glGenTextures(1, &textureID);
 	int width, height;
@@ -151,7 +151,7 @@ GLint Model::textureFromFile(const char * path, string directory)
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	unsigned char* image = SOIL_load_image("..\\ArgoDriver\\Assets\\Models\\testTexture.jpg", &width, &height, 0, SOIL_LOAD_RGB);
+	unsigned char* image = SOIL_load_image(filename.c_str(), &width, &height, 0, SOIL_LOAD_RGB);
 	
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
 	glGenerateMipmap(GL_TEXTURE_2D);

@@ -58,5 +58,8 @@ private:
 	Cube testCube;
 	camera cam;
 	Model myModel;
-	Model texturedCubeTest;
+
+	//Model Loading Testing Stuff
+	Model texturedCube;
+	Model texturedCone;
 };
