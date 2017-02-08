@@ -1,3 +1,4 @@
 ﻿  Model.cpp
+cl : Command line warning D9028: minimal rebuild failure, reverting to normal build
   ArgoDriver.vcxproj -> C:\Users\gamejam\Desktop\Argot!!!\Driver\ArgoDriver\Debug\ArgoDriver.exe
   ArgoDriver.vcxproj -> C:\Users\gamejam\Desktop\Argot!!!\Driver\ArgoDriver\Debug\ArgoDriver.pdb (Partial PDB)

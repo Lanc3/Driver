@@ -43,7 +43,7 @@ public:
 
 	Mesh(vector<Vertex> vertices, vector<GLuint> indices, vector<Texture> textures);
 
-	void Draw(Shader shader,camera cam);
+	void Draw(Shader shader,camera cam, int screenWidth, int screenHeight);
 
 private:
 	GLuint VAO;

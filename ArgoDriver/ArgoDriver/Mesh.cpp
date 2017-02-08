@@ -9,10 +9,12 @@ Mesh::Mesh(vector<Vertex> vertices, vector<GLuint> indices, vector<Texture> text
 	this->setupMesh();
 }
 
-void Mesh::Draw(Shader shader, camera cam)
+void Mesh::Draw(Shader shader, camera cam, int screenWidth, int screenHeight)
 {
 	GLuint diffuseNr = 1;
 	GLuint specularNr = 1;
+	GLuint normalNr = 1;
+	GLuint emissiveNr = 1;
 	view = cam.GetViewMatrix();
 	for (int i = 0; i < this->textures.size(); i++)
 	{
@@ -30,12 +32,20 @@ void Mesh::Draw(Shader shader, camera cam)
 		{
 			ss << specularNr++;
 		}
+		else if (name == "texture_normals")
+		{
+			ss << normalNr++;
+		}
+		else if (name == "texture_emission")
+		{
+			ss << emissiveNr++;
+		}
 
 		number = ss.str();
 		glUniform1i(glGetUniformLocation(shader.Program, (name + number).c_str()), i);
 		glBindTexture(GL_TEXTURE_2D, this->textures[i].id);
 	}
-	projection = glm::perspective(45.0f, (GLfloat)1280 / (GLfloat)720, 0.1f, 100.0f);
+	projection = glm::perspective(45.0f, (GLfloat)screenWidth / (GLfloat)screenHeight, 0.1f, 100.0f);
 	// Get their uniform location
 	GLint modelLoc = glGetUniformLocation(shader.Program, "model");
 	GLint viewLoc = glGetUniformLocation(shader.Program, "view");
@@ -52,7 +62,7 @@ void Mesh::Draw(Shader shader, camera cam)
 
 	for (GLuint i = 0; i < this->textures.size(); i++)
 	{
-		glActiveTexture(GL_TEXTURE3 + i);
+		glActiveTexture(GL_TEXTURE0 + i);
 		glBindTexture(GL_TEXTURE_2D, 0);
 	}
 }

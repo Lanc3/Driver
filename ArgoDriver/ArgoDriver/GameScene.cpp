@@ -6,8 +6,8 @@ GameScene::GameScene(float width,float height) : Scene(Scenes::GAME),width(width
 	m_skyBox.createSkybox();
 	// Camera
 	cam = camera(glm::vec3(0.0f, 0.0f, 3.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-	texturedCube = Model("..\\ArgoDriver\\Assets\\Models\\cube.obj");
-	texturedCone = Model("..\\ArgoDriver\\Assets\\Models\\cone.obj");
+	nanoSuit = Model("..\\ArgoDriver\\Assets\\Models\\nanosuit.obj");
+	cylinder = Model("..\\ArgoDriver\\Assets\\Models\\cylinder.obj");
 }
 
 void GameScene::enter()
@@ -36,6 +36,6 @@ void GameScene::update(GLfloat dt)
 void GameScene::draw()
 {
 	m_skyBox.render(cam, width, height);
-	texturedCube.Draw(cam);
-	texturedCone.Draw(cam);
+	nanoSuit.Draw(cam, width, height);
+	cylinder.Draw(cam, width, height);
 }

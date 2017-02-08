@@ -1,27 +1,25 @@
 #include "Model.h"
 
-
 Model::Model(GLchar * path)
 {
 	this->LoadModel(path);
 	m_shader = Shader("..\\ArgoDriver\\Shaders\\texture.vs", "..\\ArgoDriver\\Shaders\\texture.frag");
 }
 
-void Model::Draw(camera cam)
+void Model::Draw(camera cam, int screenWidth, int screenHeight)
 {
 	m_shader.Use();
 
 	for (GLuint i = 0; i < this->meshes.size(); i++)
 	{
-		//m_shader.Use();
-		this->meshes[i].Draw(m_shader,cam);
+		this->meshes[i].Draw(m_shader,cam, screenWidth, screenHeight);
 	}
 }
 
 void Model::LoadModel(string path)
 {
 	Assimp::Importer import;
-	const aiScene* scene = import.ReadFile(path, aiProcess_Triangulate | aiProcess_FlipUVs);
+	const aiScene* scene = import.ReadFile(path, aiProcess_Triangulate);
 
 	if (!scene || scene->mFlags == AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
 	{
@@ -99,6 +97,12 @@ Mesh Model::processMesh(aiMesh * mesh, const aiScene * scene)
 
 		vector<Texture> specularMaps = this->loadMaterialTextures(material, aiTextureType_SPECULAR, "texture_specular");
 		textures.insert(textures.end(), specularMaps.begin(), specularMaps.end());
+
+		vector<Texture> normalMaps = this->loadMaterialTextures(material, aiTextureType_HEIGHT, "texture_normals");
+		textures.insert(textures.end(), normalMaps.begin(), normalMaps.end());
+
+		vector<Texture> emissiveMaps = this->loadMaterialTextures(material, aiTextureType_EMISSIVE, "texture_emission");
+		textures.insert(textures.end(), emissiveMaps.begin(), emissiveMaps.end());
 	}
 
 	return Mesh(vertices, indices, textures);
@@ -126,7 +130,6 @@ vector<Texture> Model::loadMaterialTextures(aiMaterial * mat, aiTextureType type
 		}
 		if (!skip)
 		{
-
 			Texture tex;
 			tex.id = textureFromFile(str.C_Str(), this->directory);
 			tex.type = typeName;

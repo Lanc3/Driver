@@ -60,6 +60,6 @@ private:
 	Model myModel;
 
 	//Model Loading Testing Stuff
-	Model texturedCube;
-	Model texturedCone;
+	Model nanoSuit;
+	Model cylinder;
 };

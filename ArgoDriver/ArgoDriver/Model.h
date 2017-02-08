@@ -29,7 +29,7 @@ public:
 
 	Model(GLchar* path);
 
-	void Draw(camera cam);
+	void Draw(camera cam, int screenWidth, int screenHeight);
 
 private:
 
