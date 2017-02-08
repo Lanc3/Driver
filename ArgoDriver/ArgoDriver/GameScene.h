@@ -12,11 +12,10 @@
 
 #include <SOIL.h>
 #include "camera.h"
-
-
-
+#include "Model.h"
 #include "Scene.h"
 #include "Shader.h"
+#include "Skybox.h"
 // GLM Mathematics
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -52,9 +51,12 @@ private:
 	Shader ourShader;
 	glm::mat4 trans;
 	float width, height;
+	Skybox m_skyBox;
 	glm::mat4 model;
 	glm::mat4 view;
 	glm::mat4 projection;
 	Cube testCube;
 	camera cam;
+	Model myModel;
+	Model texturedCubeTest;
 };

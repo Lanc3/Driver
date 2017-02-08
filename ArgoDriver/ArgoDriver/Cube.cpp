@@ -88,9 +88,6 @@ Cube::Cube(string texture,glm::mat4 pro)
 	SOIL_free_image_data(image);
 	glBindTexture(GL_TEXTURE_2D, 0);
 	// Unbind texture when done, so we won't accidentily mess up our texture.
-	// ===================
-	// Texture 2
-	// ===================
 	glGenTextures(1, &texture2);
 	glBindTexture(GL_TEXTURE_2D, texture2);
 	// Set our texture parameters
