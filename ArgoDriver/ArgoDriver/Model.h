@@ -19,7 +19,7 @@ using namespace std;
 #include <assimp/cimport.h>
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
-
+#include"ResourceManager.h"
 #include "Mesh.h"
 
 class Model
@@ -29,22 +29,24 @@ public:
 
 	Model(GLchar* path);
 
-	void Draw(camera cam);
+	void GetMesh(string name);
+
+	void Draw(camera cam, string name);
 
 private:
 
 	vector<Mesh> meshes;
 	string directory;
 	vector<Texture> textures_loaded;
-	Shader m_shader;
+	//Shader m_shader;
 	
-	void LoadModel(string path);
+	//void LoadModel(string path);
 	GLuint texture;
-	void processNode(aiNode* node, const aiScene* scene);
+	//void processNode(aiNode* node, const aiScene* scene);
 
-	Mesh processMesh(aiMesh* mesh, const aiScene* scene);
+	//Mesh processMesh(aiMesh* mesh, const aiScene* scene);
 
-	vector<Texture> loadMaterialTextures(aiMaterial* mat, aiTextureType type, string typeName);
+	//vector<Texture> loadMaterialTextures(aiMaterial* mat, aiTextureType type, string typeName);
 
-	GLint textureFromFile(const char* path, string directory);
+	//GLint textureFromFile(const char* path, string directory);
 };

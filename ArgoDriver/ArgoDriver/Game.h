@@ -4,6 +4,7 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <SDL.h>
+#include "ResourceManager.h"
 
 // Represents the current state of the game
 enum GameState {
@@ -25,6 +26,7 @@ public:
 	// Constructor/Destructor
 	Game(GLuint width, GLuint height);
 	~Game();
+	void LoadResources();
 	// Initialize game state (load all shaders/textures/levels)
 	void Init();
 	// GameLoop

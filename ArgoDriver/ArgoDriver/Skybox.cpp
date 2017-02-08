@@ -2,7 +2,7 @@
 
 void Skybox::createSkybox()
 {
-	m_shader = Shader("..\\ArgoDriver\\Shaders\\skyBoxShader.vs", "..\\ArgoDriver\\Shaders\\skyBoxShader.frag");
+	//m_shader = Shader("..\\ArgoDriver\\Shaders\\skyBoxShader.vs", "..\\ArgoDriver\\Shaders\\skyBoxShader.frag");
 
 	//Positions of face vertices
 	GLfloat skyboxVertices[] = {
@@ -103,15 +103,16 @@ void Skybox::render(camera cam, int screenWidth, int screenHeight)
 {
 	// Draw skybox first
 	glDepthMask(GL_FALSE);// Remember to turn depth writing off
-	m_shader.Use();
+	Shader skyShader = ResourceManager::GetShader("skybox");
+	skyShader.Use();
 	glm::mat4 view = glm::mat4(glm::mat3(cam.GetViewMatrix()));	// Remove any translation component of the view matrix
 	glm::mat4 projection = glm::perspective(cam.Zoom, (float)screenWidth / (float)screenHeight, 0.1f, 100.0f);
-	glUniformMatrix4fv(glGetUniformLocation(m_shader.Program, "view"), 1, GL_FALSE, glm::value_ptr(view));
-	glUniformMatrix4fv(glGetUniformLocation(m_shader.Program, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
+	glUniformMatrix4fv(glGetUniformLocation(skyShader.ID, "view"), 1, GL_FALSE, glm::value_ptr(view));
+	glUniformMatrix4fv(glGetUniformLocation(skyShader.ID, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
 	// skybox cube
 	glBindVertexArray(skyboxVAO);
 	glActiveTexture(GL_TEXTURE0);
-	glUniform1i(glGetUniformLocation(m_shader.Program, "skybox"), 0);
+	glUniform1i(glGetUniformLocation(skyShader.ID, "skybox"), 0);
 	glBindTexture(GL_TEXTURE_CUBE_MAP, cubemapTexture);
 	glDrawArrays(GL_TRIANGLES, 0, 36);
 	glBindVertexArray(0);

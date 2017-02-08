@@ -6,9 +6,10 @@
 
 #include <GL/glew.h>
 #include "SOIL.h"
-#include "Shader.h"
+//#include "Shader.h"
 #include <vector>
 #include "camera.h"
+#include "ResourceManager.h"
 
 using namespace std;
 
@@ -20,5 +21,5 @@ public:
 	GLuint loadCubemap(vector<const GLchar*> faces);
 	GLuint cubemapTexture;
 	GLuint skyboxVAO;
-	Shader m_shader;	
+	//Shader m_shader;	
 };

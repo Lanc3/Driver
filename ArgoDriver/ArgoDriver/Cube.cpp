@@ -3,8 +3,8 @@
 
 Cube::Cube(string texture,glm::mat4 pro)
 {
-	ourShader = Shader("..\\ArgoDriver\\Shaders\\texture.vs", "..\\ArgoDriver\\Shaders\\texture.frag");
-
+	//ourShader = Shader("..\\ArgoDriver\\Shaders\\texture.vs", "..\\ArgoDriver\\Shaders\\texture.frag");
+	//ourShader = ResourceManager::LoadShader("..\\ArgoDriver\\Shaders\\texture.vs", "..\\ArgoDriver\\Shaders\\texture.frag", nullptr, "test");
 
 	GLfloat vertices[] = {
 		-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
@@ -108,7 +108,8 @@ Cube::Cube(string texture,glm::mat4 pro)
 
 	projection = pro;
 
-	ourShader.Use();
+	ResourceManager::GetShader("Cube").Use();
+	//ourShader.Use();
 }
 
 Cube::Cube()
@@ -142,9 +143,9 @@ void Cube::draw(camera cam)
 	view = cam.GetViewMatrix();
 
 	// Get their uniform location
-	GLint modelLoc = glGetUniformLocation(ourShader.Program, "model");
-	GLint viewLoc = glGetUniformLocation(ourShader.Program, "view");
-	GLint projLoc = glGetUniformLocation(ourShader.Program, "projection");
+	GLint modelLoc = glGetUniformLocation(ResourceManager::GetShader("cube").ID, "model");
+	GLint viewLoc = glGetUniformLocation(ResourceManager::GetShader("cube").ID, "view");
+	GLint projLoc = glGetUniformLocation(ResourceManager::GetShader("cube").ID, "projection");
 	// Pass them to the shaders
 	glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 	glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
@@ -153,10 +154,10 @@ void Cube::draw(camera cam)
 	// Bind Textures using texture units
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, texture1);
-	glUniform1i(glGetUniformLocation(ourShader.Program, "ourTexture1"), 0);
+	glUniform1i(glGetUniformLocation(ResourceManager::GetShader("cube").ID, "ourTexture1"), 0);
 	glActiveTexture(GL_TEXTURE1);
 	glBindTexture(GL_TEXTURE_2D, texture2);
-	glUniform1i(glGetUniformLocation(ourShader.Program, "ourTexture2"), 1);
+	glUniform1i(glGetUniformLocation(ResourceManager::GetShader("cube").ID, "ourTexture2"), 1);
 
 	// Draw container
 	glBindVertexArray(VAO);

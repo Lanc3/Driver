@@ -17,8 +17,22 @@ Game::~Game()
 
 }
 
+void Game::LoadResources()
+{
+	//Load Shaders
+	Shader skyShader = ResourceManager::LoadShader("..\\ArgoDriver\\Shaders\\skyBoxShader.vs", "..\\ArgoDriver\\Shaders\\skyBoxShader.frag", nullptr, "skybox");
+	Shader modelShader = ResourceManager::LoadShader("..\\ArgoDriver\\Shaders\\texture.vs", "..\\ArgoDriver\\Shaders\\texture.frag", nullptr, "model");
+	Shader cubeShader = ResourceManager::LoadShader("..\\ArgoDriver\\Shaders\\texture.vs", "..\\ArgoDriver\\Shaders\\texture.frag", nullptr, "cube");
+
+	//Load Models
+	ResourceManager manager;
+	manager.LoadModel("..\\ArgoDriver\\Assets\\Models\\player.obj", "player");
+}
+
 void Game::Init()
 {
+	LoadResources();
+
 	SceneManager::getInstance()->addScene(new GameScene(Width,Height));
 	SceneManager::getInstance()->addScene(new GameOverScene());
 	SceneManager::getInstance()->addScene(new MainMenuScene());

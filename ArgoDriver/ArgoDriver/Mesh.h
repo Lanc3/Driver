@@ -15,10 +15,10 @@ using namespace std;
 #include <assimp/cimport.h>
 #include <glm/gtc/type_ptr.hpp>
 #include <assimp/types.h>
+
 #include "Shader.h"
 #include "camera.h"
-//#include <assimp/scene.h>
-//#include <assimp/postprocess.h>
+
 
 struct Vertex {
 	glm::vec3 Position;
@@ -34,6 +34,8 @@ struct Texture {
 
 class Mesh {
 public:
+	Mesh() {};
+
 	glm::mat4 model;
 	glm::mat4 view;
 	glm::mat4 projection;

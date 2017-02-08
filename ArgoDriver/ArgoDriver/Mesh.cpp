@@ -32,19 +32,19 @@ void Mesh::Draw(Shader shader, camera cam)
 		}
 
 		number = ss.str();
-		glUniform1i(glGetUniformLocation(shader.Program, (name + number).c_str()), i);
+		glUniform1i(glGetUniformLocation(shader.ID, (name + number).c_str()), i);
 		glBindTexture(GL_TEXTURE_2D, this->textures[i].id);
 	}
 	projection = glm::perspective(45.0f, (GLfloat)1280 / (GLfloat)720, 0.1f, 100.0f);
 	// Get their uniform location
-	GLint modelLoc = glGetUniformLocation(shader.Program, "model");
-	GLint viewLoc = glGetUniformLocation(shader.Program, "view");
-	GLint projLoc = glGetUniformLocation(shader.Program, "projection");
+	GLint modelLoc = glGetUniformLocation(shader.ID, "model");
+	GLint viewLoc = glGetUniformLocation(shader.ID, "view");
+	GLint projLoc = glGetUniformLocation(shader.ID, "projection");
 	// Pass them to the shaders
 	glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 	glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
 	glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(projection));
-	glUniform1f(glGetUniformLocation(shader.Program, "material.shininess"), 16.0f);
+	glUniform1f(glGetUniformLocation(shader.ID, "material.shininess"), 16.0f);
 
 	glBindVertexArray(this->VAO);
 	glDrawElements(GL_TRIANGLES, this->indices.size(), GL_UNSIGNED_INT, 0);
