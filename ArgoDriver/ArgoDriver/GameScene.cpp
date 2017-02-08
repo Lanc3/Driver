@@ -6,7 +6,7 @@ GameScene::GameScene(float width,float height) : Scene(Scenes::GAME),width(width
 	m_skyBox.createSkybox();
 	// Camera
 	cam = camera(glm::vec3(0.0f, 0.0f, 3.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-	cylinder = Model("..\\ArgoDriver\\Assets\\Models\\cylinder.obj");
+	cylinder = Model("..\\ArgoDriver\\Assets\\Models\\roadChunk.obj");
 }
 
 void GameScene::enter()

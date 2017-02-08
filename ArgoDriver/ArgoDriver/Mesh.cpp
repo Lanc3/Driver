@@ -55,7 +55,6 @@ void Mesh::Draw(Shader shader, camera cam, int screenWidth, int screenHeight)
 	glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
 	glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(projection));
 	glUniform1f(glGetUniformLocation(shader.Program, "material.shininess"), 16.0f);
-
 	glBindVertexArray(this->VAO);
 	glDrawElements(GL_TRIANGLES, this->indices.size(), GL_UNSIGNED_INT, 0);
 	glBindVertexArray(0);
