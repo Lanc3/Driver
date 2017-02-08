@@ -38,7 +38,7 @@ private:
 	Shader m_shader;
 
 	void LoadModel(string path);
-
+	GLuint texture;
 	void processNode(aiNode* node, const aiScene* scene);
 
 	Mesh processMesh(aiMesh* mesh, const aiScene* scene);

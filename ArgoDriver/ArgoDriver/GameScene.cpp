@@ -4,8 +4,7 @@
 GameScene::GameScene(float width,float height) : Scene(Scenes::GAME),width(width),height(height)
 {
 	 ourShader = Shader("..\\ArgoDriver\\Shaders\\texture.vs", "..\\ArgoDriver\\Shaders\\texture.frag");
-
-
+	
 	 GLfloat vertices[] = {
 		 -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
 		 0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
@@ -144,15 +143,17 @@ void GameScene::update(GLfloat dt)
 void GameScene::draw()
 {
 	m_skyBox.render(cam, width, height);
-	// Activate shader
+	//// Activate shader
 	ourShader.Use();
 
 	glm::mat4 model;	
 	model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));	// It's a bit too big for our scene, so scale it down
+	model = glm::translate(model, glm::vec3(0, 0, 0.5f));
 	glUniformMatrix4fv(glGetUniformLocation(ourShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
-	//myModel.Draw();
+
+	////myModel.Draw();
 	texturedCubeTest.Draw();
-	// Bind Textures using texture units
+	//// Bind Textures using texture units
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, texture1);
 	glUniform1i(glGetUniformLocation(ourShader.Program, "ourTexture1"), 0);
@@ -160,12 +161,12 @@ void GameScene::draw()
 	glBindTexture(GL_TEXTURE_2D, texture2);
 	glUniform1i(glGetUniformLocation(ourShader.Program, "ourTexture2"), 1);
 
-	// Draw container
+	//// Draw container
 	glBindVertexArray(VAO);
 	glDrawArrays(GL_TRIANGLES, 0, 36);
 	glBindVertexArray(0);
 
-	
+	//
 	testCube.draw(cam);
 }
 
