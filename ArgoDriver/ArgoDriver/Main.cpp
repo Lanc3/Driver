@@ -22,8 +22,9 @@
 #include <string>
 
 //Screen dimension constants
-const int SCREEN_WIDTH = 1280;
-const int SCREEN_HEIGHT = 720;
+const int SCREEN_WIDTH = 1920;
+const int SCREEN_HEIGHT = 1080;
+
 
 //Starts up SDL, creates window, and initializes OpenGL
 bool init();
@@ -159,7 +160,9 @@ int main(int argc, char* args[])
 		// create the Game object to abstract away from the window generation code
 		argoDriver.Init();
 		argoDriver.State = GAME_ACTIVE;
+
 		//SDL_SetWindowFullscreen(gWindow, SDL_WINDOW_FULLSCREEN_DESKTOP);
+
 		//While application is running
 		while (!quit)
 		{

@@ -12,9 +12,7 @@
 
 #include <SOIL.h>
 #include "camera.h"
-
 #include "Model.h"
-
 #include "Scene.h"
 #include "Shader.h"
 #include "Skybox.h"
