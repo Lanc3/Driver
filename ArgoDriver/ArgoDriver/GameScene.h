@@ -60,6 +60,5 @@ private:
 	Model myModel;
 
 	//Model Loading Testing Stuff
-	Model nanoSuit;
 	Model cylinder;
 };
