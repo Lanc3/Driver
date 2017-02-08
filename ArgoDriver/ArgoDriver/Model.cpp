@@ -5,47 +5,16 @@ Model::Model(GLchar * path)
 {
 	this->LoadModel(path);
 	m_shader = Shader("..\\ArgoDriver\\Shaders\\texture.vs", "..\\ArgoDriver\\Shaders\\texture.frag");
-
-
-	glGenTextures(1, &texture);
-	glBindTexture(GL_TEXTURE_2D, texture);
-	// Set our texture parameters
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	// Set texture filtering
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	// Load, create texture and generate mipmaps
-	int Iwidth;
-	int Iheight;
-	unsigned char* image = SOIL_load_image("..\\ArgoDriver\\Assets\\Models\\testTexture.jpg", &Iwidth, &Iheight, 0, SOIL_LOAD_RGB);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, Iwidth, Iheight, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
-	glGenerateMipmap(GL_TEXTURE_2D);
-	SOIL_free_image_data(image);
-	glBindTexture(GL_TEXTURE_2D, 0);
-
-	//projection = pro;
-
-	//m_shader.Use();
 }
 
-void Model::Draw()
+void Model::Draw(camera cam)
 {
 	m_shader.Use();
 
 	for (GLuint i = 0; i < this->meshes.size(); i++)
 	{
 		//m_shader.Use();
-
-		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, texture);
-		glUniform1i(glGetUniformLocation(m_shader.Program, "ourTexture1"), 0);
-
-		glm::mat4 model;
-
-		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));	// It's a bit too big for our scene, so scale it down
-		glUniformMatrix4fv(glGetUniformLocation(m_shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
-		this->meshes[i].Draw(m_shader);
+		this->meshes[i].Draw(m_shader,cam);
 	}
 }
 
@@ -157,6 +126,7 @@ vector<Texture> Model::loadMaterialTextures(aiMaterial * mat, aiTextureType type
 		}
 		if (!skip)
 		{
+
 			Texture tex;
 			tex.id = textureFromFile(str.C_Str(), this->directory);
 			tex.type = typeName;
@@ -171,20 +141,24 @@ vector<Texture> Model::loadMaterialTextures(aiMaterial * mat, aiTextureType type
 GLint Model::textureFromFile(const char * path, string directory)
 {
 	string filename = string(path);
-	filename = directory + '/' + filename;
+	filename = "..//ArgoDriver//Assets//Models" + '//' + filename;
 	GLuint textureID;
 	glGenTextures(1, &textureID);
 	int width, height;
-	unsigned char* image = SOIL_load_image(filename.c_str(), &width, &height, 0, SOIL_LOAD_RGB);
 	glBindTexture(GL_TEXTURE_2D, textureID);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
-	glGenerateMipmap(GL_TEXTURE_2D);
+
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glBindTexture(GL_TEXTURE_2D, 0);
+	unsigned char* image = SOIL_load_image("..\\ArgoDriver\\Assets\\Models\\testTexture.jpg", &width, &height, 0, SOIL_LOAD_RGB);
+	
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
+	glGenerateMipmap(GL_TEXTURE_2D);
+
+	//glBindTexture(GL_TEXTURE_2D, 0);
 	SOIL_free_image_data(image);
+	glBindTexture(GL_TEXTURE_2D, 0);
 
 	return textureID;
 }

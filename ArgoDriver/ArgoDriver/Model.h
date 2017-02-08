@@ -13,6 +13,7 @@ using namespace std;
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <SOIL.h>
+#include "camera.h"
 #include <assimp/Importer.hpp>
 #include<assimp/material.h>
 #include <assimp/cimport.h>
@@ -28,7 +29,7 @@ public:
 
 	Model(GLchar* path);
 
-	void Draw();
+	void Draw(camera cam);
 
 private:
 
@@ -36,7 +37,7 @@ private:
 	string directory;
 	vector<Texture> textures_loaded;
 	Shader m_shader;
-
+	
 	void LoadModel(string path);
 	GLuint texture;
 	void processNode(aiNode* node, const aiScene* scene);

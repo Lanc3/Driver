@@ -16,6 +16,7 @@ using namespace std;
 #include <glm/gtc/type_ptr.hpp>
 #include <assimp/types.h>
 #include "Shader.h"
+#include "camera.h"
 //#include <assimp/scene.h>
 //#include <assimp/postprocess.h>
 
@@ -33,14 +34,16 @@ struct Texture {
 
 class Mesh {
 public:
-
+	glm::mat4 model;
+	glm::mat4 view;
+	glm::mat4 projection;
 	vector<Vertex> vertices;
 	vector<GLuint> indices;
 	vector<Texture> textures;
 
 	Mesh(vector<Vertex> vertices, vector<GLuint> indices, vector<Texture> textures);
 
-	void Draw(Shader shader);
+	void Draw(Shader shader,camera cam);
 
 private:
 	GLuint VAO;

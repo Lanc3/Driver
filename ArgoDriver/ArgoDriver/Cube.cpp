@@ -100,7 +100,7 @@ Cube::Cube(string texture,glm::mat4 pro)
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	// Load, create texture and generate mipmaps
-	image = SOIL_load_image("..\\ArgoDriver\\Assets\\Models\\testTexture.jpg", &Iwidth, &Iheight, 0, SOIL_LOAD_RGB);
+	image = SOIL_load_image("..\\ArgoDriver\\Assets\\Images\\container.jpg", &Iwidth, &Iheight, 0, SOIL_LOAD_RGB);
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, Iwidth, Iheight, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
 	glGenerateMipmap(GL_TEXTURE_2D);
 	SOIL_free_image_data(image);
