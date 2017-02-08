@@ -112,7 +112,8 @@ GameScene::GameScene(float width,float height) : Scene(Scenes::GAME),width(width
 	// Camera
 	cam = camera(glm::vec3(0.0f, 0.0f, 3.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 	ourShader = Shader("..\\ArgoDriver\\Shaders\\texture.vs", "..\\ArgoDriver\\Shaders\\texture.frag");
-	myModel = Model("..\\ArgoDriver\\Assets\\Models\\player.obj");
+	//myModel = Model("..\\ArgoDriver\\Assets\\Models\\player.obj");
+	texturedCubeTest = Model("..\\ArgoDriver\\Assets\\Models\\cube.obj");
 }
 
 void GameScene::enter()
@@ -142,14 +143,15 @@ void GameScene::update(GLfloat dt)
 
 void GameScene::draw()
 {
-	m_skyBox.render(cam);
+	m_skyBox.render(cam, width, height);
 	// Activate shader
 	ourShader.Use();
 
 	glm::mat4 model;	
 	model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));	// It's a bit too big for our scene, so scale it down
 	glUniformMatrix4fv(glGetUniformLocation(ourShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
-	myModel.Draw(ourShader);
+	//myModel.Draw();
+	texturedCubeTest.Draw();
 	// Bind Textures using texture units
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, texture1);

@@ -16,7 +16,7 @@ class Skybox
 {
 public:
 	void createSkybox();
-	void render(camera cam);
+	void render(camera cam, int screenWidth, int screenHeight);
 	GLuint loadCubemap(vector<const GLchar*> faces);
 	GLuint cubemapTexture;
 	GLuint skyboxVAO;

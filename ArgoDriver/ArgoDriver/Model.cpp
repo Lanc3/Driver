@@ -4,13 +4,14 @@
 Model::Model(GLchar * path)
 {
 	this->LoadModel(path);
+	m_shader = Shader("..\\ArgoDriver\\Shaders\\texture.vs", "..\\ArgoDriver\\Shaders\\texture.frag");
 }
 
-void Model::Draw(Shader shader)
+void Model::Draw()
 {
 	for (GLuint i = 0; i < this->meshes.size(); i++)
 	{
-		this->meshes[i].Draw(shader);
+		this->meshes[i].Draw(m_shader);
 	}
 }
 

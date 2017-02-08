@@ -28,13 +28,14 @@ public:
 
 	Model(GLchar* path);
 
-	void Draw(Shader shader);
+	void Draw();
 
 private:
 
 	vector<Mesh> meshes;
 	string directory;
 	vector<Texture> textures_loaded;
+	Shader m_shader;
 
 	void LoadModel(string path);
 

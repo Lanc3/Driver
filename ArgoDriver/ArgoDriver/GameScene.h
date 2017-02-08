@@ -60,4 +60,5 @@ private:
 	Cube testCube;
 	camera cam;
 	Model myModel;
+	Model texturedCubeTest;
 };
