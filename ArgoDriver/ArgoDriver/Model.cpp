@@ -15,7 +15,7 @@ void Model::GetMesh(string name)
 
 void Model::Draw(camera cam, string name)
 {
-	Shader m_shader = ResourceManager::GetShader("model");
+	Shader m_shader = ResourceManager::GetShader("cube");
 	m_shader.Use();
 
 	ResourceManager m_mesh;

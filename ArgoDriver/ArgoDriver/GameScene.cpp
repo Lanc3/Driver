@@ -44,7 +44,7 @@ void GameScene::draw()
 {
 	m_skyBox.render(cam, width, height);
 	//testCube.draw(cam);
-	texturedCubeTest.Draw(cam, "player");
+	texturedCubeTest.Draw(cam, "cube");
 	
 	
 }

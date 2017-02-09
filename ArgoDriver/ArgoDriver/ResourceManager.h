@@ -14,6 +14,7 @@
 #include <assimp/postprocess.h>
 #include <SOIL.h>
 #include "Shader.h"
+#include "Textures.h"
 #include "Mesh.h"
 
 
@@ -38,11 +39,14 @@ public:
 
 	static std::map<std::string, Shader> shaders;
 	MeshData meshData;
-	//static std::map<std::string, MeshData> meshMap;
+	static std::map<std::string, Textures> textures;
 	static std::map<std::string, Mesh> madeMeshes;
 
 	static Shader LoadShader(const GLchar* vShaderFile, const GLchar *fShaderFile, const GLchar * gShaderFile, std::string name);
 	static Shader GetShader(string name);
+
+	static Textures LoadTexture(const GLchar* file, GLboolean alpha, std::string name);
+	static Textures GetTexture(string name);
 
 	void LoadMeshes(std::string pat, string name);
 
@@ -69,6 +73,7 @@ private:
 
 	//static Shader loadMeshFromFile(const GLchar *vShaderFile, const GLchar *fShaderFile, const GLchar *gShaderFile = nullptr);
 	static Shader loadShaderFromFile(const GLchar *vShaderFile, const GLchar *fShaderFile, const GLchar *gShaderFile = nullptr);
+	static Textures loadTextureFromFile(const GLchar *file, GLboolean alpha);
 	vector<Texture> loadMaterialTextures(aiMaterial * mat, aiTextureType type, string typeName);
 	GLint textureFromFile(const char * path, string directory);
 };

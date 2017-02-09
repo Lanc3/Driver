@@ -3,6 +3,7 @@
 std::map<std::string, Mesh> ResourceManager::madeMeshes;
 //std::map<std::string, MeshData> ResourceManager::meshMap;
 std::map<std::string, Shader> ResourceManager::shaders;
+std::map<std::string, Textures> ResourceManager::textures;
 
 Shader ResourceManager::LoadShader(const GLchar * vShaderFile, const GLchar * fShaderFile, const GLchar * gShaderFile, std::string name)
 {
@@ -15,6 +16,38 @@ Shader ResourceManager::GetShader(string name)
 	return shaders[name];
 }
 
+Textures ResourceManager::LoadTexture(const GLchar * file, GLboolean alpha, std::string name)
+{
+	textures[name] = loadTextureFromFile(file, alpha);
+	return textures[name];
+}
+
+Textures ResourceManager::GetTexture(string name)
+{
+	return textures[name];
+}
+
+Textures ResourceManager::loadTextureFromFile(const GLchar * file, GLboolean alpha)
+{
+	Textures texture;
+
+	if (alpha)
+	{
+		texture.Internal_Format = GL_RGBA;
+		texture.Image_Format = GL_RGBA;
+	}
+
+	int width;
+	int height;
+
+	unsigned char* image = SOIL_load_image(file, &width, &height, 0, texture.Image_Format == GL_RGBA ? SOIL_LOAD_RGB : SOIL_LOAD_RGB);
+
+	texture.Generate(width, height, image);
+
+	SOIL_free_image_data(image);
+	return texture;
+}
+
 void ResourceManager::LoadMeshes(std::string path, string name)
 {	
 
@@ -23,7 +56,7 @@ void ResourceManager::LoadMeshes(std::string path, string name)
 void ResourceManager::LoadModel(string path, string name)
 {
 	Assimp::Importer import;
-	const aiScene* scene = import.ReadFile(path, aiProcess_Triangulate);
+	const aiScene* scene = import.ReadFile(path, aiProcess_Triangulate | aiProcess_FlipUVs);
 
 	if (!scene || scene->mFlags == AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
 	{
@@ -31,7 +64,7 @@ void ResourceManager::LoadModel(string path, string name)
 		return;
 	}
 
-	this->directory = path.substr(0, path.find_last_of("/"));
+	this->directory = path.substr(0, path.find_last_of("\\"));
 	this->processNode(scene->mRootNode, scene, name);
 }
 
@@ -99,10 +132,10 @@ Mesh ResourceManager::processMesh(aiMesh * mesh, const aiScene * scene, string n
 	{
 		aiMaterial* material = scene->mMaterials[mesh->mMaterialIndex];
 
-		vector<Texture> diffuseMaps = this->loadMaterialTextures(material, aiTextureType_DIFFUSE, "texture_diffuse");
+		vector<Texture> diffuseMaps = loadMaterialTextures(material, aiTextureType_DIFFUSE, "texture_diffuse");
 		textures.insert(textures.end(), diffuseMaps.begin(), diffuseMaps.end());
 
-		vector<Texture> specularMaps = this->loadMaterialTextures(material, aiTextureType_SPECULAR, "texture_specular");
+		vector<Texture> specularMaps = loadMaterialTextures(material, aiTextureType_SPECULAR, "texture_specular");
 		textures.insert(textures.end(), specularMaps.begin(), specularMaps.end());
 	}
 	MeshData m;
@@ -111,8 +144,6 @@ Mesh ResourceManager::processMesh(aiMesh * mesh, const aiScene * scene, string n
 	m.textures = textures;
 
 	meshData = m;
-	//meshData.push_back(m);
-	//meshMap[name] = m;
 
 	BuildMesh(name);
 
@@ -193,6 +224,8 @@ vector<Texture> ResourceManager::loadMaterialTextures(aiMaterial * mat, aiTextur
 {
 	vector<Texture> textures;
 
+	GLuint h = mat->GetTextureCount(type);
+
 	for (GLuint i = 0; i < mat->GetTextureCount(type); i++)
 	{
 		aiString str;
@@ -226,7 +259,8 @@ vector<Texture> ResourceManager::loadMaterialTextures(aiMaterial * mat, aiTextur
 GLint ResourceManager::textureFromFile(const char * path, string directory)
 {
 	string filename = string(path);
-	filename = "..//ArgoDriver//Assets//Models" + '//' + filename;
+	filename = directory + '\\' + filename;
+
 	GLuint textureID;
 	glGenTextures(1, &textureID);
 	int width, height;
@@ -236,7 +270,7 @@ GLint ResourceManager::textureFromFile(const char * path, string directory)
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	unsigned char* image = SOIL_load_image("..\\ArgoDriver\\Assets\\Models\\testTexture.jpg", &width, &height, 0, SOIL_LOAD_RGB);
+	unsigned char* image = SOIL_load_image(filename.c_str(), &width, &height, 0, SOIL_LOAD_RGB);
 
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
 	glGenerateMipmap(GL_TEXTURE_2D);
