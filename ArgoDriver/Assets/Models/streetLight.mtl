@@ -1,0 +1,26 @@
+# Blender MTL File: 'streetLight.blend'
+# Material Count: 2
+
+newmtl Details
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd streetLightDetailsTexture.png
+map_Ke streetLightMetalEmission.png
+
+newmtl Metal
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd streetLightMetalTexture.png
+map_Ks streetLightMetalSpec.png

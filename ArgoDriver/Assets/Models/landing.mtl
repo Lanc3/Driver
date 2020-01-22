@@ -1,0 +1,74 @@
+# Blender MTL File: 'None'
+# Material Count: 6
+
+newmtl VMtl01
+Ns 1.960784
+Ka 0.014567 0.014567 0.014567
+Kd 0.000000 0.435300 0.192200
+Ks 0.002300 0.002300 0.002300
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd metal07_door_128.jpg
+map_Ka metal07_door_128.jpg
+
+newmtl VMtl02
+Ns 0.000000
+Ka 0.050000 0.050000 0.050000
+Kd 0.500000 0.500000 0.500000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd metal_door_windws01.jpg
+map_Ka metal_door_windws01.jpg
+
+newmtl VMtl03
+Ns 0.000000
+Ka 0.050000 0.050000 0.050000
+Kd 0.500000 0.500000 0.500000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd metal_windws01.jpg
+map_Ka metal_windws01.jpg
+
+newmtl VMtl04
+Ns 0.000000
+Ka 0.050000 0.050000 0.050000
+Kd 0.500000 0.500000 0.500000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd metal07_door2_128.jpg
+map_Ka metal07_door2_128.jpg
+
+newmtl VMtl05
+Ns 0.000000
+Ka 0.006667 0.006667 0.006667
+Kd 0.113700 0.086300 0.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd metal_Landing_sign.jpg
+map_Ka metal_Landing_sign.jpg
+
+newmtl VMtl06
+Ns 0.000000
+Ka 0.050000 0.050000 0.050000
+Kd 0.500000 0.500000 0.500000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd warn_stripe_128.jpg
+map_Ka warn_stripe_128.jpg

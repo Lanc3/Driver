@@ -1,9 +1,0 @@
-﻿  Main.cpp
-c:\users\gamejam\desktop\argot!!!\driver\argodriver\argodriver\main.cpp(45): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
-c:\users\gamejam\desktop\argot!!!\driver\argodriver\argodriver\main.cpp(170): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-c:\users\gamejam\desktop\argot!!!\driver\argodriver\argodriver\main.cpp(181): warning C4244: '=': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\gamejam\desktop\argot!!!\driver\argodriver\argodriver\main.cpp(182): warning C4244: '=': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\gamejam\desktop\argot!!!\driver\argodriver\argodriver\main.cpp(189): warning C4244: '=': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\gamejam\desktop\argot!!!\driver\argodriver\argodriver\main.cpp(190): warning C4244: '=': conversion from 'int' to 'GLfloat', possible loss of data
-  ArgoDriver.vcxproj -> C:\Users\gamejam\Desktop\Argot!!!\Driver\ArgoDriver\Debug\ArgoDriver.exe
-  ArgoDriver.vcxproj -> C:\Users\gamejam\Desktop\Argot!!!\Driver\ArgoDriver\Debug\ArgoDriver.pdb (Partial PDB)
